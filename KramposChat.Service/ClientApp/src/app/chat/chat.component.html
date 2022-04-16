@@ -1,0 +1,16 @@
+<div>
+  <input [formControl]="userNameFormControl" type="text">
+  <input [formControl]="messageNameFormControl" type="text">
+  <button (click)="sendMessageCreateUser(userNameFormControl.value, messageNameFormControl.value)"
+          type="submit"></button>
+  <div *ngIf="chat && chat.messages">
+    {{chat.messages.user}} {{chat.messages.message}}
+  </div>
+</div>
+
+<div>
+  <input [formControl]="chatFormControl" type="text">
+  <button (click)="createChat(chatFormControl.value)" type="submit"></button>
+  <div *ngIf="chat"> {{chat.name}}</div>
+</div>
+
