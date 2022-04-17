@@ -1,4 +1,5 @@
-﻿using KramposChat.Service.Extensions;
+﻿using KramposChat.Dal;
+using KramposChat.Service.Extensions;
 using KramposChat.Service.SignalRHub;
 
 namespace KramposChat.Service;
@@ -48,6 +49,7 @@ public class Startup
 	public void ConfigureServices(IServiceCollection services)
 	{
 		services.AddDataBase(GetPostgresConnectionString());
+		services.AddDbContext<KramposChatDbContext>();
 		services.AddControllers();
 		services.AddSignalR();
 		services.AddCors(options =>
@@ -62,11 +64,8 @@ public class Startup
 		});
 	}
 	#endregion
-	
-	
-	private string GetPostgresConnectionString()
-	{
-		return Configuration.GetConnectionString("PostgresConnectionString");
-	}
 
+	#region Private
+	private string GetPostgresConnectionString() => Configuration.GetConnectionString("PostgresConnectionString");
+	#endregion
 }

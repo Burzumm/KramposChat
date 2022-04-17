@@ -1,18 +1,24 @@
 ﻿namespace KramposChat.Dal.Models;
 
-public class Message
+public class User
 {
 	#region Properties
-	public User Author
+	public List<Chat> Chats
 	{
 		get;
 		init;
 	}
 
-	public string Text
+	public Guid Id
 	{
 		get;
 		init;
 	}
+
+	public string Name
+	{
+		get;
+		init;
+	} = null!;
 	#endregion
 }
